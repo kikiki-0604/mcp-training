@@ -9,22 +9,25 @@ services:
     ports:
       - "3000:8080"
     environment:
-      # Gemini APIキー（.envファイルから読み込む）
+      # Gemini APIキー
       - GOOGLE_API_KEY=${GEMINI_API_KEY}
-      # OpenAI互換エンドポイントは無効化
-      - OPENAI_API_KEY=disabled
+      # OpenAI互換エンドポイントを無効化（Geminiのみ使用）
+      - OPENAI_API_KEY=
+      - OPENAI_API_BASE_URL=
       # 管理者設定
       - WEBUI_SECRET_KEY=mcp-training-secret
+      # デフォルトモデル設定
+      - DEFAULT_MODELS=gemini-2.0-flash
     volumes:
       - open-webui-data:/app/backend/data
     depends_on:
       - mcpo
+    networks:
+      - mcp-net
     restart: unless-stopped
 
   # ─────────────────────────────────────────
   # mcpo（MCP → HTTP/OpenAPI プロキシ）
-  # ghcr.io/open-webui/mcpo:main を拡張して
-  # Node.js + MCP サーバーパッケージを追加
   # ─────────────────────────────────────────
   mcpo:
     build:
@@ -39,11 +42,12 @@ services:
     depends_on:
       sqlite-mcp:
         condition: service_healthy
+    networks:
+      - mcp-net
     restart: unless-stopped
 
   # ─────────────────────────────────────────
   # filesystem-mcp（ファイルシステム操作MCP）
-  # workspace/ 以下のファイルを MCP で操作可能にする
   # ─────────────────────────────────────────
   filesystem-mcp:
     build:
@@ -52,10 +56,12 @@ services:
     container_name: mcp-training-filesystem
     volumes:
       - ./workspace:/workspace
+    networks:
+      - mcp-net
     restart: unless-stopped
 
   # ─────────────────────────────────────────
-  # sqlite-mcp（SQLite操作MCP + DB初期化）
+  # sqlite-mcp（DB初期化専用コンテナ）
   # 起動時に training.db が未存在なら init-db.sql から自動初期化
   # ─────────────────────────────────────────
   sqlite-mcp:
@@ -71,7 +77,13 @@ services:
       timeout: 10s
       retries: 10
       start_period: 10s
+    networks:
+      - mcp-net
     restart: unless-stopped
+
+networks:
+  mcp-net:
+    driver: bridge
 
 volumes:
   open-webui-data:
