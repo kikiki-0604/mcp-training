@@ -1,5 +1,6 @@
 #!/bin/sh
-# SQLite MCP サーバーの起動前に DB を初期化するスクリプト
+# sqlite-mcp コンテナの役割: DB初期化のみ
+# 実際の MCP サーバーは mcpo コンテナが uvx で起動する
 
 DB_PATH="/workspace/db/training.db"
 INIT_SQL="/workspace/db/init-db.sql"
@@ -25,5 +26,6 @@ else
   echo "[entrypoint] 既存の training.db を使用します: $DB_PATH"
 fi
 
-# MCP SQLite サーバーを起動（Python 製パッケージを uvx で実行）
-exec uvx mcp-server-sqlite --db-path "$DB_PATH"
+# DB初期化完了後はコンテナを待機状態で維持（healthcheck用）
+echo "[entrypoint] DB 準備完了。待機中..."
+tail -f /dev/null
