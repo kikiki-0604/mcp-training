@@ -1,0 +1,30 @@
+2026-03-10 00:05:13 INFO  [batch] 夜間バッチ開始
+2026-03-10 00:10:27 INFO  [batch] 夜間バッチ完了: 処理時間=314s
+2026-03-10 08:00:00 INFO  [payment] 3Dセキュア未完了注文チェック: order_id=18 認証待ち継続中
+2026-03-10 08:00:01 INFO  [email] 3Dセキュア再認証案内: to=nishimura.kaoru@example.com order_id=18
+2026-03-10 09:00:00 INFO  [auth] ログイン成功: user_id=17 ip=203.0.113.77
+2026-03-10 09:00:20 INFO  [order] 注文受付: order_id=19 user_id=17 total=7480
+2026-03-10 09:00:21 INFO  [inventory] 在庫引当完了: order_id=19 product_id=19 stock_after=149
+2026-03-10 09:01:05 INFO  [payment] 決済完了: order_id=19 transaction_id=PPY-20260310-019
+2026-03-10 09:01:06 INFO  [order] 注文ステータス更新: order_id=19 status=confirmed
+2026-03-10 09:01:07 INFO  [email] 注文確認メール: to=kimoto.jun@example.com order_id=19
+2026-03-10 10:00:00 INFO  [review] レビュー投稿: user_id=4 product_id=20 rating=5
+2026-03-10 10:01:00 INFO  [review] 承認済み: review_id=10
+2026-03-10 11:00:00 INFO  [api] GET /api/v1/products?sort=popular status=200 latency=71ms
+2026-03-10 12:00:00 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-10 13:00:00 INFO  [auth] ログイン成功: user_id=3 ip=203.0.113.33
+2026-03-10 14:00:00 INFO  [order] 注文受付: order_id=20 user_id=3 total=27280
+2026-03-10 14:00:01 INFO  [inventory] 在庫引当完了: order_id=20 product_id=8 stock_after=98
+2026-03-10 14:00:02 INFO  [payment] 決済処理開始: order_id=20 method=credit_card amount=27280
+2026-03-10 14:00:10 WARN  [payment] 決済タイムアウト: order_id=20 method=credit_card elapsed=30000ms
+2026-03-10 14:00:11 INFO  [payment] 決済リトライ: order_id=20 attempt=2
+2026-03-10 14:00:45 INFO  [payment] 決済完了（リトライ成功）: order_id=20 transaction_id=TXN-20260310-020
+2026-03-10 15:00:00 WARN  [db] スロークエリ検出: SELECT orders JOIN payments elapsed=1250ms
+2026-03-10 15:00:01 INFO  [db] スロークエリログ記録: query_id=SQ-20260310-001
+2026-03-10 16:00:00 INFO  [api] GET /api/v1/products/11 status=200 latency=16ms
+2026-03-10 17:30:00 INFO  [payment] 3Dセキュア認証完了: order_id=18 user_id=16
+2026-03-10 17:30:01 INFO  [payment] 決済完了: order_id=18 transaction_id=TXN-20260310-018
+2026-03-10 17:30:02 INFO  [order] 注文ステータス更新: order_id=18 status=paid
+2026-03-10 17:30:03 INFO  [email] 注文確認メール: to=nishimura.kaoru@example.com order_id=18
+2026-03-10 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=197560円 注文件数=2件
+2026-03-10 23:59:10 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

@@ -1,0 +1,29 @@
+2026-03-08 00:05:11 INFO  [batch] 夜間バッチ開始
+2026-03-08 00:10:25 INFO  [batch] 夜間バッチ完了: 処理時間=314s
+2026-03-08 08:00:00 INFO  [batch] 棚卸し差異チェックバッチ開始
+2026-03-08 08:00:30 WARN  [inventory] 在庫差異検出: product_id=13 sku=VC-CORD-01 system=50 actual=45 diff=-5
+2026-03-08 08:00:31 INFO  [inventory] 在庫調整: product_id=13 qty=-5 stock_after=45 reason=棚卸し差異
+2026-03-08 08:00:32 INFO  [alert] Slack通知: channel=#ops-alert msg=在庫差異発生 VC-CORD-01 -5個
+2026-03-08 09:00:00 INFO  [auth] ログイン成功: user_id=14 ip=203.0.113.44
+2026-03-08 09:00:20 INFO  [order] 注文受付: order_id=15 user_id=14 total=74800
+2026-03-08 09:00:21 INFO  [inventory] 在庫引当完了: order_id=15 product_id=12 stock_after=19
+2026-03-08 09:00:22 INFO  [payment] 決済処理開始: order_id=15 method=credit_card amount=74800
+2026-03-08 09:00:30 ERROR [payment] 決済失敗: order_id=15 error_code=INSUFFICIENT_FUNDS
+2026-03-08 09:00:31 INFO  [order] 注文ステータス更新: order_id=15 status=pending（決済待ち）
+2026-03-08 09:00:32 INFO  [email] 決済失敗通知: to=yamaguchi.emi@example.com order_id=15
+2026-03-08 09:30:00 INFO  [api] GET /api/v1/products/13 status=200 latency=14ms
+2026-03-08 10:00:00 WARN  [inventory] 在庫差異再確認: product_id=13 diff=-3（追加差異）
+2026-03-08 10:00:01 ERROR [inventory] 在庫不整合: product_id=13 sku=VC-CORD-01 連続差異検出
+2026-03-08 10:00:02 INFO  [inventory] 在庫調整: product_id=13 qty=-3 stock_after=42 reason=追加棚卸し差異
+2026-03-08 10:00:03 INFO  [alert] PagerDutyアラート: severity=medium msg=在庫不整合 VC-CORD-01（累計-8個）
+2026-03-08 11:00:00 INFO  [auth] ログイン成功: user_id=15 ip=198.51.100.99
+2026-03-08 11:00:20 INFO  [order] 注文受付: order_id=16 user_id=15 total=10390
+2026-03-08 11:00:21 INFO  [inventory] 在庫引当完了: order_id=16 product_id=6 stock_after=98
+2026-03-08 11:01:05 INFO  [payment] 決済完了: order_id=16 transaction_id=PPY-20260308-016
+2026-03-08 11:01:06 INFO  [order] 注文ステータス更新: order_id=16 status=confirmed
+2026-03-08 12:00:00 INFO  [batch] 定時在庫同期完了: 差異検知=1件（product_id=13 調査中）
+2026-03-08 14:00:00 WARN  [inventory] 在庫差異: product_id=13 再々チェックでも-2差異
+2026-03-08 14:00:01 ERROR [inventory] 在庫不整合エスカレーション: product_id=13 累計差異=-10個 調査要
+2026-03-08 14:00:02 INFO  [alert] メール通知: to=warehouse-manager@example-shop.co.jp 件名=在庫不整合調査依頼
+2026-03-08 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=10390円 注文件数=1件
+2026-03-08 23:59:08 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

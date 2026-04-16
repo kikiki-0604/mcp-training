@@ -1,0 +1,30 @@
+2026-03-03 00:05:08 INFO  [batch] 夜間バッチ開始: 在庫補充チェック
+2026-03-03 00:06:10 INFO  [batch] 在庫補充対象商品: 1件 (SP-A15-WHT)
+2026-03-03 00:10:22 INFO  [batch] 夜間バッチ完了: 処理時間=314s
+2026-03-03 08:00:00 INFO  [batch] 未入金コンビニ払い督促バッチ開始
+2026-03-03 08:01:00 INFO  [batch] 督促メール送信: 1件
+2026-03-03 09:15:00 INFO  [auth] ログイン成功: user_id=8 ip=203.0.113.88
+2026-03-03 09:15:20 INFO  [order] 注文受付（銀行振込）: order_id=8 user_id=8 status=confirmed
+2026-03-03 09:30:00 INFO  [shipment] ヤマト連携API呼び出し: order_id=6 action=tracking_update
+2026-03-03 09:30:01 INFO  [shipment] 追跡情報更新: tracking_number=YM-4455667788 status=in_transit
+2026-03-03 10:03:44 INFO  [api] GET /api/v1/products?category=4 status=200 latency=39ms
+2026-03-03 10:40:12 WARN  [payment] 決済タイムアウト: order_id=99020 method=credit_card elapsed=30003ms
+2026-03-03 10:40:13 INFO  [payment] 決済リトライ: order_id=99020 attempt=2
+2026-03-03 10:41:00 ERROR [payment] 決済失敗（外部API障害）: order_id=99020 error_code=GATEWAY_TIMEOUT provider=stripe
+2026-03-03 10:41:01 WARN  [payment] 決済ゲートウェイ障害検知: provider=stripe 連続失敗=2件
+2026-03-03 10:41:02 INFO  [alert] Slackアラート送信: channel=#ops-alert msg=決済ゲートウェイ障害
+2026-03-03 10:41:05 INFO  [order] 注文ステータス更新: order_id=99020 status=pending（決済待ち継続）
+2026-03-03 11:00:00 INFO  [api] GET /api/v1/orders?user_id=9 status=200 latency=44ms
+2026-03-03 11:15:00 INFO  [auth] ログイン成功: user_id=9 ip=203.0.113.45
+2026-03-03 12:00:00 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-03 13:05:22 INFO  [shipment] ヤマト出荷完了登録: order_id=7 tracking_number=SG-5566778899
+2026-03-03 13:05:23 INFO  [order] 注文ステータス更新: order_id=7 status=shipped
+2026-03-03 13:05:25 INFO  [email] 発送通知メール送信: to=nakamura.ryo@example.com order_id=7
+2026-03-03 14:30:00 INFO  [api] POST /api/v1/cart/add status=200 latency=28ms user_id=9
+2026-03-03 15:22:18 WARN  [payment] 決済タイムアウト: order_id=99021 method=credit_card elapsed=30001ms
+2026-03-03 15:22:19 INFO  [payment] 決済リトライ: order_id=99021 attempt=2
+2026-03-03 15:22:50 ERROR [payment] 決済失敗: order_id=99021 error_code=GATEWAY_TIMEOUT provider=stripe
+2026-03-03 15:22:51 WARN  [payment] 決済ゲートウェイ障害継続: provider=stripe 連続失敗=3件
+2026-03-03 15:22:52 INFO  [alert] Slackアラート送信: channel=#ops-alert msg=決済障害エスカレーション（3件連続）
+2026-03-03 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=0円 注文件数=0件
+2026-03-03 23:59:03 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=WARN（hit_rate=65%）

@@ -1,0 +1,27 @@
+2026-03-06 00:05:09 INFO  [batch] 夜間バッチ開始
+2026-03-06 00:06:00 INFO  [batch] 在庫補充対象商品: 0件
+2026-03-06 00:10:19 INFO  [batch] 夜間バッチ完了: 処理時間=310s
+2026-03-06 08:00:00 INFO  [batch] 未入金コンビニ払い督促バッチ: 対象1件 order_id=11
+2026-03-06 08:01:00 INFO  [email] 督促メール送信: to=hayashi.daisuke@example.com order_id=11
+2026-03-06 09:00:00 INFO  [api] GET /api/v1/products status=200 latency=47ms
+2026-03-06 10:00:00 INFO  [shipment] 配送ステータス一括更新バッチ開始
+2026-03-06 10:00:30 INFO  [shipment] ヤマトAPI取得: tracking_number=YM-4455667788 status=delivered
+2026-03-06 10:00:31 INFO  [order] 注文ステータス更新: order_id=6 status=delivered
+2026-03-06 10:00:32 INFO  [email] 配達完了通知: to=yamamoto.ai@example.com order_id=6
+2026-03-06 11:30:00 INFO  [auth] ログイン成功: user_id=12 ip=198.51.100.55
+2026-03-06 11:30:30 INFO  [cart] カートに追加: user_id=12 product_id=20 qty=1
+2026-03-06 14:00:00 INFO  [order] 注文受付: order_id=12 user_id=12 total=10780
+2026-03-06 14:00:01 INFO  [inventory] 在庫引当完了: order_id=12 product_id=20 stock_after=89
+2026-03-06 14:01:05 INFO  [payment] 決済完了: order_id=12 transaction_id=PPY-20260306-012
+2026-03-06 14:01:06 INFO  [order] 注文ステータス更新: order_id=12 status=paid
+2026-03-06 14:01:07 INFO  [email] 注文確認メール送信: to=kimura.rie@example.com order_id=12
+2026-03-06 14:30:00 INFO  [api] GET /api/v1/products/20 status=200 latency=13ms
+2026-03-06 15:00:00 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-06 15:30:00 INFO  [review] レビュー投稿: user_id=6 product_id=6 rating=5
+2026-03-06 15:31:00 INFO  [review] レビュー承認待ち: review_id=6
+2026-03-06 16:00:00 INFO  [api] GET /api/v1/recommendations?user_id=12 status=200 latency=55ms
+2026-03-06 17:00:00 INFO  [shipment] 佐川API: order_id=7 status=delivered
+2026-03-06 17:00:01 INFO  [order] 注文ステータス更新: order_id=7 status=delivered
+2026-03-06 17:00:02 INFO  [email] 配達完了通知: to=nakamura.ryo@example.com order_id=7
+2026-03-06 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=10780円 注文件数=1件
+2026-03-06 23:59:06 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

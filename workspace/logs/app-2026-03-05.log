@@ -1,0 +1,27 @@
+2026-03-05 00:05:12 INFO  [batch] 夜間バッチ開始
+2026-03-05 00:10:28 INFO  [batch] 夜間バッチ完了: 処理時間=316s
+2026-03-05 07:30:00 INFO  [payment] Stripeゲートウェイ復旧確認: provider=stripe status=operational
+2026-03-05 07:30:01 INFO  [alert] 復旧通知送信: channel=#ops-alert msg=決済ゲートウェイ復旧
+2026-03-05 08:00:00 INFO  [batch] ペンディング注文 決済リトライバッチ開始
+2026-03-05 08:00:10 WARN  [payment] 決済リトライ: order_id=99020 attempt=3
+2026-03-05 08:00:42 ERROR [payment] 決済失敗（最終）: order_id=99020 error_code=CARD_EXPIRED
+2026-03-05 08:00:43 INFO  [order] 注文キャンセル: order_id=99020 reason=決済失敗（カード期限切れ）
+2026-03-05 08:01:00 WARN  [payment] 決済リトライ: order_id=99021 attempt=3
+2026-03-05 08:01:31 INFO  [payment] 決済完了（リトライ成功）: order_id=99021 transaction_id=TXN-20260305-9921
+2026-03-05 08:30:33 INFO  [auth] ログイン成功: user_id=11 ip=203.0.113.21
+2026-03-05 08:30:45 INFO  [order] 注文受付: order_id=11 user_id=11 total=25000
+2026-03-05 08:30:46 INFO  [inventory] 在庫引当完了: order_id=11 product_id=15 stock_after=54
+2026-03-05 09:00:00 INFO  [shipment] ヤマト出荷完了: order_id=8 tracking_number=（省略）
+2026-03-05 09:00:01 INFO  [order] 注文ステータス更新: order_id=8 status=shipped
+2026-03-05 10:00:00 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-05 10:15:00 INFO  [api] GET /api/v1/products?sort=popular status=200 latency=68ms
+2026-03-05 12:00:00 INFO  [api] POST /api/v1/reviews status=201 latency=44ms user_id=5 product_id=3
+2026-03-05 13:30:00 INFO  [api] GET /api/v1/orders/11 status=200 latency=22ms
+2026-03-05 14:45:11 WARN  [payment] 決済タイムアウト: order_id=99040 method=credit_card elapsed=30005ms
+2026-03-05 14:45:12 INFO  [payment] 決済リトライ: order_id=99040 attempt=2
+2026-03-05 14:45:44 INFO  [payment] 決済完了（リトライ成功）: order_id=99040 transaction_id=TXN-20260305-9940
+2026-03-05 15:00:00 INFO  [review] レビュー投稿承認: review_id=5 product_id=3
+2026-03-05 16:00:00 INFO  [recommendation] レコメンドキャッシュ更新完了
+2026-03-05 18:00:00 INFO  [coupon] クーポン利用集計: WELCOME10=8件 SPRING500=15件
+2026-03-05 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=25000円 注文件数=1件
+2026-03-05 23:59:05 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

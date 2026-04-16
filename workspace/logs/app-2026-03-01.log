@@ -1,0 +1,29 @@
+2026-03-01 00:05:12 INFO  [batch] 夜間バッチ開始: 在庫補充チェック
+2026-03-01 00:05:45 INFO  [batch] 在庫補充対象商品: 3件 (SP-A15-BLK, TB-PRO-11, VC-CORD-01)
+2026-03-01 00:06:01 INFO  [batch] 在庫補充通知メール送信完了: purchase-dept@example-shop.co.jp
+2026-03-01 00:10:33 INFO  [batch] 夜間バッチ完了: 処理時間=318s
+2026-03-01 08:02:14 INFO  [order] 注文受付: order_id=6 user_id=6 total=140800
+2026-03-01 08:02:14 INFO  [inventory] 在庫引当開始: order_id=6 product_id=4 qty=1
+2026-03-01 08:02:15 INFO  [inventory] 在庫引当完了: order_id=6 product_id=4 stock_after=19
+2026-03-01 08:02:15 INFO  [inventory] 在庫引当完了: order_id=6 product_id=6 stock_after=99
+2026-03-01 09:58:31 INFO  [payment] 決済処理開始: order_id=6 method=credit_card amount=140800
+2026-03-01 10:04:52 INFO  [payment] 決済完了: order_id=6 transaction_id=TXN-20260301-006
+2026-03-01 10:04:53 INFO  [order] 注文ステータス更新: order_id=6 status=paid
+2026-03-01 10:04:54 INFO  [email] 注文確認メール送信: to=yamamoto.ai@example.com order_id=6
+2026-03-01 10:05:01 INFO  [email] 送信完了: to=yamamoto.ai@example.com msgid=MSG-20260301-00601
+2026-03-01 11:20:08 INFO  [search] 商品検索: keyword="ノイズキャンセリング" hits=2 user_id=9
+2026-03-01 11:45:33 INFO  [cart] カートに追加: user_id=9 product_id=9 qty=1
+2026-03-01 13:30:00 INFO  [api] GET /api/v1/products?category=2 status=200 latency=45ms
+2026-03-01 13:30:01 INFO  [api] GET /api/v1/products/9 status=200 latency=12ms
+2026-03-01 14:10:22 INFO  [auth] ログイン成功: user_id=9 ip=203.0.113.45
+2026-03-01 15:00:00 INFO  [batch] 定時在庫同期: 全商品スキャン開始
+2026-03-01 15:02:44 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-01 16:30:11 WARN  [payment] 決済タイムアウト: order_id=99001 method=credit_card elapsed=30001ms
+2026-03-01 16:30:12 INFO  [payment] 決済リトライ: order_id=99001 attempt=2
+2026-03-01 16:30:45 INFO  [payment] 決済完了(リトライ成功): order_id=99001 transaction_id=TXN-20260301-9901
+2026-03-01 17:45:00 INFO  [api] POST /api/v1/orders status=201 latency=234ms user_id=11
+2026-03-01 18:00:00 INFO  [recommendation] レコメンド更新バッチ開始
+2026-03-01 18:05:12 INFO  [recommendation] レコメンド更新完了: 対象商品=20件
+2026-03-01 21:00:00 INFO  [batch] 売上日次集計バッチ開始
+2026-03-01 21:02:30 INFO  [batch] 売上日次集計完了: 売上総額=283580円 注文件数=1件
+2026-03-01 23:59:01 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

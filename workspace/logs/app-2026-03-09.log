@@ -1,0 +1,28 @@
+2026-03-09 00:05:16 INFO  [batch] 夜間バッチ開始
+2026-03-09 00:10:31 INFO  [batch] 夜間バッチ完了: 処理時間=315s
+2026-03-09 08:00:00 INFO  [inventory] 倉庫担当による在庫実査開始: product_id=13
+2026-03-09 08:30:00 INFO  [inventory] 実査完了: product_id=13 実数=42個 理由=紛失ラベル商品を誤カウント
+2026-03-09 08:30:01 INFO  [inventory] 在庫差異解消: product_id=13 差異=0
+2026-03-09 09:00:00 INFO  [api] GET /api/v1/products status=200 latency=48ms
+2026-03-09 10:00:00 INFO  [auth] ログイン成功: user_id=2 ip=203.0.113.22
+2026-03-09 10:10:00 INFO  [cart] カートに追加: user_id=2 product_id=7 qty=1
+2026-03-09 13:00:00 INFO  [order] 注文受付: order_id=17 user_id=2 total=3520
+2026-03-09 13:00:01 INFO  [inventory] 在庫引当完了: order_id=17 product_id=7 stock_after=199
+2026-03-09 13:01:05 INFO  [payment] 決済完了: order_id=17 transaction_id=TXN-20260309-017
+2026-03-09 13:01:06 INFO  [order] 注文ステータス更新: order_id=17 status=paid
+2026-03-09 13:01:07 INFO  [email] 注文確認メール: to=suzuki.hanako@example.com order_id=17
+2026-03-09 14:00:00 INFO  [api] GET /api/v1/orders?user_id=2 status=200 latency=33ms
+2026-03-09 15:00:00 INFO  [auth] ログイン成功: user_id=16 ip=198.51.100.101
+2026-03-09 15:30:00 INFO  [cart] カートに追加: user_id=16 product_id=11 qty=1
+2026-03-09 16:00:00 INFO  [order] 注文受付: order_id=18 user_id=16 total=162800
+2026-03-09 16:00:01 INFO  [inventory] 在庫引当完了: order_id=18 product_id=11 stock_after=14
+2026-03-09 16:00:02 INFO  [payment] 決済処理開始: order_id=18 method=credit_card amount=162800
+2026-03-09 16:00:10 WARN  [payment] 高額決済 3Dセキュア認証待ち: order_id=18 amount=162800
+2026-03-09 16:00:12 INFO  [payment] 3Dセキュア認証要求送信: order_id=18
+2026-03-09 16:05:00 WARN  [payment] 3Dセキュア認証タイムアウト: order_id=18 elapsed=288s
+2026-03-09 16:05:01 INFO  [payment] 決済ステータス: order_id=18 status=pending（認証待ち）
+2026-03-09 18:00:00 INFO  [review] レビュー投稿: user_id=9 product_id=9 rating=4
+2026-03-09 18:01:00 INFO  [review] 承認済み: review_id=9
+2026-03-09 20:00:00 INFO  [batch] メール配信バッチ: 週次レコメンド 送信件数=20件
+2026-03-09 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=3520円 注文件数=1件
+2026-03-09 23:59:09 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

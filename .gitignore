@@ -1,0 +1,35 @@
+# 環境変数ファイル（APIキーを含むため必ずgit管理から除外）
+.env
+
+# DBファイル（自動生成されるため除外）
+workspace/db/training.db
+workspace/db/training.db-shm
+workspace/db/training.db-wal
+
+# ソースコードの作業ファイル（.gitkeepは除く）
+workspace/src/*
+!workspace/src/.gitkeep
+
+# Docker関連
+.docker/
+
+# OS・エディタ系
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# ログの一時ファイル
+*.log.tmp

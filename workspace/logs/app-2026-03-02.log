@@ -1,0 +1,28 @@
+2026-03-02 00:05:10 INFO  [batch] 夜間バッチ開始: 在庫補充チェック
+2026-03-02 00:06:02 INFO  [batch] 在庫補充対象商品: 0件
+2026-03-02 00:10:05 INFO  [batch] 夜間バッチ完了: 処理時間=295s
+2026-03-02 08:15:44 INFO  [auth] ログイン成功: user_id=7 ip=198.51.100.12
+2026-03-02 08:30:00 INFO  [order] 注文受付: order_id=7 user_id=7 total=42400
+2026-03-02 08:30:01 INFO  [inventory] 在庫引当完了: order_id=7 product_id=16 stock_after=99
+2026-03-02 09:00:11 INFO  [shipment] 出荷準備開始: order_id=6 carrier=yamato
+2026-03-02 09:00:12 INFO  [api] POST /api/v1/shipments status=201 latency=89ms
+2026-03-02 10:31:05 INFO  [payment] 決済完了: order_id=7 transaction_id=TXN-20260302-007
+2026-03-02 10:31:06 INFO  [order] 注文ステータス更新: order_id=7 status=paid
+2026-03-02 10:31:07 INFO  [email] 注文確認メール送信: to=nakamura.ryo@example.com order_id=7
+2026-03-02 11:00:00 INFO  [api] GET /api/v1/orders/7 status=200 latency=31ms
+2026-03-02 12:00:00 INFO  [batch] 定時在庫同期開始
+2026-03-02 12:02:11 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-02 13:22:55 INFO  [api] GET /api/v1/products status=200 latency=52ms
+2026-03-02 14:05:33 WARN  [payment] 決済タイムアウト: order_id=99010 method=credit_card elapsed=30002ms
+2026-03-02 14:05:34 INFO  [payment] 決済リトライ: order_id=99010 attempt=2
+2026-03-02 14:06:08 ERROR [payment] 決済失敗（リトライ上限）: order_id=99010 error_code=CARD_DECLINED
+2026-03-02 14:06:09 INFO  [order] 注文ステータス更新: order_id=99010 status=cancelled
+2026-03-02 14:06:10 INFO  [email] 決済失敗通知メール送信: to=user99010@example.com order_id=99010
+2026-03-02 14:10:00 INFO  [inventory] 在庫戻し: order_id=99010 product_id=2 qty=+1 stock_after=31
+2026-03-02 15:00:00 INFO  [api] GET /api/v1/categories status=200 latency=18ms
+2026-03-02 16:45:12 INFO  [auth] ログイン成功: user_id=8 ip=203.0.113.88
+2026-03-02 17:00:00 INFO  [order] 注文受付: order_id=8 user_id=8 total=49500
+2026-03-02 17:00:01 INFO  [inventory] 在庫引当完了: order_id=8 product_id=17 stock_after=39
+2026-03-02 20:00:00 INFO  [batch] 売上日次集計開始
+2026-03-02 20:02:15 INFO  [batch] 売上日次集計完了: 売上総額=42400円 注文件数=1件
+2026-03-02 23:59:02 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK

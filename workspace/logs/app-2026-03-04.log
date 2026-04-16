@@ -1,0 +1,28 @@
+2026-03-04 00:05:15 INFO  [batch] 夜間バッチ開始
+2026-03-04 00:10:30 INFO  [batch] 夜間バッチ完了: 処理時間=315s
+2026-03-04 08:00:00 INFO  [batch] 期限切れクーポン無効化バッチ: 対象0件
+2026-03-04 09:00:00 INFO  [api] GET /api/v1/products/9 status=200 latency=15ms
+2026-03-04 09:15:00 INFO  [auth] ログイン成功: user_id=9 ip=203.0.113.45
+2026-03-04 09:30:00 INFO  [order] 注文受付: order_id=9 user_id=9 total=27280
+2026-03-04 09:30:01 INFO  [inventory] 在庫引当完了: order_id=9 product_id=9 stock_after=59
+2026-03-04 10:00:00 INFO  [bank] 入金確認バッチ開始: 銀行API呼び出し
+2026-03-04 10:00:05 INFO  [bank] 入金確認: order_id=8 amount=49500 confirmed=true
+2026-03-04 10:00:06 INFO  [order] 注文ステータス更新: order_id=8 status=paid
+2026-03-04 10:00:07 INFO  [email] 入金確認メール送信: to=kobayashi.miki@example.com order_id=8
+2026-03-04 11:00:00 INFO  [auth] ログイン成功: user_id=10 ip=192.0.2.33
+2026-03-04 11:00:30 INFO  [order] 注文受付: order_id=10 user_id=10 total=98780
+2026-03-04 11:00:31 INFO  [inventory] 在庫引当完了: order_id=10 product_id=1 stock_after=98
+2026-03-04 11:00:32 INFO  [payment] 決済処理開始: order_id=10 method=credit_card amount=98780
+2026-03-04 11:00:35 ERROR [payment] 決済失敗: order_id=10 error_code=CARD_DECLINED error_msg=カード限度額超過
+2026-03-04 11:00:36 INFO  [order] 注文ステータス更新: order_id=10 status=cancelled
+2026-03-04 11:00:37 INFO  [inventory] 在庫戻し: order_id=10 product_id=1 qty=+1 stock_after=99
+2026-03-04 11:00:38 INFO  [email] 決済失敗通知: to=yoshida.nana@example.com order_id=10
+2026-03-04 12:00:00 INFO  [batch] 定時在庫同期完了: 差異なし
+2026-03-04 14:55:22 WARN  [payment] 決済タイムアウト: order_id=99030 method=credit_card elapsed=30004ms
+2026-03-04 14:55:23 ERROR [payment] 決済失敗: order_id=99030 error_code=GATEWAY_TIMEOUT provider=stripe
+2026-03-04 14:55:24 WARN  [payment] 決済ゲートウェイ障害継続: provider=stripe 連続失敗=4件
+2026-03-04 14:55:25 INFO  [alert] PagerDutyアラート送信: severity=high msg=決済ゲートウェイ連続失敗4件
+2026-03-04 16:01:08 INFO  [payment] 決済完了: order_id=9 transaction_id=TXN-20260304-009
+2026-03-04 16:01:09 INFO  [order] 注文ステータス更新: order_id=9 status=confirmed
+2026-03-04 21:00:00 INFO  [batch] 売上日次集計完了: 売上総額=27280円 注文件数=1件
+2026-03-04 23:59:04 INFO  [monitor] ヘルスチェック: DB=OK API=OK CACHE=OK
