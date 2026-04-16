@@ -9,15 +9,9 @@ services:
     ports:
       - "3000:8080"
     environment:
-      # Gemini APIキー
-      - GOOGLE_API_KEY=${GEMINI_API_KEY}
-      # OpenAI互換エンドポイントを無効化（Geminiのみ使用）
-      - OPENAI_API_KEY=
-      - OPENAI_API_BASE_URL=
       # 管理者設定
       - WEBUI_SECRET_KEY=mcp-training-secret
-      # デフォルトモデル設定
-      - DEFAULT_MODELS=gemini-2.0-flash
+      # Gemini APIキーはGUI（Settings→Connections）から設定する
     volumes:
       - open-webui-data:/app/backend/data
     depends_on:
