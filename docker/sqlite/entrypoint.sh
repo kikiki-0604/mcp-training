@@ -13,7 +13,6 @@ if [ ! -f "$DB_PATH" ]; then
     exit 1
   fi
 
-  # sqlite3 CLI で DB を作成・初期化
   sqlite3 "$DB_PATH" < "$INIT_SQL"
 
   if [ $? -eq 0 ]; then
@@ -26,5 +25,5 @@ else
   echo "[entrypoint] 既存の training.db を使用します: $DB_PATH"
 fi
 
-# MCP SQLite サーバーを起動
-exec mcp-server-sqlite --db-path "$DB_PATH"
+# MCP SQLite サーバーを起動（Python 製パッケージを uvx で実行）
+exec uvx mcp-server-sqlite --db-path "$DB_PATH"
