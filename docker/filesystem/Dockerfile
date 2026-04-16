@@ -7,6 +7,6 @@ WORKDIR /app
 # MCP filesystem サーバーをグローバルインストール
 RUN npm install -g @modelcontextprotocol/server-filesystem
 
-# /workspace をマウントポイントとして起動
-# このコンテナは参照・動作確認用（実際の MCP 接続は mcpo 経由）
-CMD ["mcp-server-filesystem", "/workspace"]
+# 実際の MCP 接続は mcpo コンテナが npx で起動するため
+# このコンテナは参照用として待機状態を維持する
+CMD ["tail", "-f", "/dev/null"]
