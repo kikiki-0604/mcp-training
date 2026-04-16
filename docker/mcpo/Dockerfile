@@ -7,10 +7,9 @@ RUN apt-get update && apt-get install -y curl gnupg && \
     apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# MCP サーバーパッケージをグローバルインストール
-RUN npm install -g \
-    @modelcontextprotocol/server-filesystem \
-    @modelcontextprotocol/server-sqlite
+# filesystem MCP サーバーをインストール（Node.js製）
+# sqlite MCP サーバーは Python 製のため uvx で実行（mcpo イメージに uvx 同梱済み）
+RUN npm install -g @modelcontextprotocol/server-filesystem
 
 # mcpo のエントリポイントはベースイメージに定義済み
 # config.json は docker-compose で /app/config.json にマウント
