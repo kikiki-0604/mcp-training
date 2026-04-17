@@ -1,0 +1,9 @@
+# シェルスクリプトは必ずLF（Unix改行）で管理する
+*.sh text eol=lf
+
+# その他のテキストファイルはOSに合わせる
+*.md text
+*.yml text
+*.json text
+*.sql text
+*.env text
